@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-06-30T14:53:08.085Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36" etag="rvPc0oNYFNY_Mbs06p8V" version="13.3.5" type="github">
+<mxfile host="app.diagrams.net" modified="2020-07-01T14:13:59.957Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36" etag="wuI_C4Cpb0ErmVn9JCB4" version="13.3.5" type="github">
   <diagram id="EnGBE1AvFFQfY2pASgys" name="第 1 页">
-    <mxGraphModel dx="2249" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1417" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -185,17 +185,17 @@
         <mxCell id="78IFhjk_3ZHjHySOzImb-13" value="3.在实例then方法中保存传递&#xa;  的回调函数&#xa;  (1)在构造函数中定义resolve&#xa;   和rejecte函数,具体实现改变&#xa;   状态和接收数据并保存&#xa;  (2)在resolve和reject函数中&#xa;    判断数组是否有保存then()&#xa;    的回调,有则异步调用(定时器)&#xa;  (3)resolve和reject不能多次调&#xa;    用,在最开始判断状态即可&#xa;  (4)捕获同步执行器抛出的异常,&#xa;    改变为失败状态,但此时不会调&#xa;    用then()中传递的回调,因为还&#xa;    没有执行then将回调进行保存&#xa;    不明白的话,断点调试即可" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="78IFhjk_3ZHjHySOzImb-10" vertex="1">
           <mxGeometry y="140" width="230" height="270" as="geometry" />
         </mxCell>
-        <mxCell id="J3Hmyx6Ni5WOGKM76cY0-5" value="then()方法实现" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="-720" y="1070" width="470" height="270" as="geometry" />
+        <mxCell id="J3Hmyx6Ni5WOGKM76cY0-5" value="then()方法实现  (用来指定成功/失败的回调函数)" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-720" y="1070" width="470" height="324" as="geometry" />
         </mxCell>
-        <mxCell id="J3Hmyx6Ni5WOGKM76cY0-6" value="用来指定成功/失败的回调函数" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="J3Hmyx6Ni5WOGKM76cY0-5">
-          <mxGeometry y="26" width="470" height="26" as="geometry" />
+        <mxCell id="J3Hmyx6Ni5WOGKM76cY0-7" value="      1. 如果当前promise是resolved,异步执行成功的回调函数onResolved&#xa;      2. 如果当前promise是rejected,异步执行失败的回调函数onRejected&#xa;      3. 如果当前promise是pending,保存回调函数" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="J3Hmyx6Ni5WOGKM76cY0-5" vertex="1">
+          <mxGeometry y="26" width="470" height="68" as="geometry" />
         </mxCell>
-        <mxCell id="J3Hmyx6Ni5WOGKM76cY0-7" value="      1. 如果当前promise是resolved,异步执行成功的回调函数onResolved&#xa;      2. 如果当前promise是rejected,异步执行失败的回调函数onRejected&#xa;      3. 如果当前promise是pending,保存回调函数" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="J3Hmyx6Ni5WOGKM76cY0-5">
-          <mxGeometry y="52" width="470" height="68" as="geometry" />
+        <mxCell id="J3Hmyx6Ni5WOGKM76cY0-8" value="返回一个新的promise对象&#xa;它的结果状态由onResolved或onRejected执行的结果决定&#xa;      2.1 抛出error ==&gt; 变为rejected,结果值为error&#xa;      2.2 返回值不是promise ==&gt; resolved,结果值为返回值&#xa;      2.3 返回值是promise ==&gt; 由这个promise决定新的promise的结果(成功/失败)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="J3Hmyx6Ni5WOGKM76cY0-5" vertex="1">
+          <mxGeometry y="94" width="470" height="96" as="geometry" />
         </mxCell>
-        <mxCell id="J3Hmyx6Ni5WOGKM76cY0-8" value="返回一个新的promise对象&#xa;它的结果状态由onResolved或onRejected执行的结果决定&#xa;      2.1 抛出error ==&gt; 变为rejected,结果值为error&#xa;      2.2 返回值不是promise ==&gt; resolved,结果值为返回值&#xa;      2.3 返回值是promise ==&gt; 由这个promise决定新的promise的结果(成功/失败)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="J3Hmyx6Ni5WOGKM76cY0-5">
-          <mxGeometry y="120" width="470" height="150" as="geometry" />
+        <mxCell id="J3Hmyx6Ni5WOGKM76cY0-6" value="PENDING状态,保存传递自定义的的回调, 因为直接将then()传递的回调保存起来时, 后面&#xa;reoslve或rejecte调用的时候 返回的promise状态 一直是PENDING状态, 后面链式调用&#xa;没有效果的 &#xa;  然后开始封装重复的代码, 将try..catch代码块封装, 参数是调用的异步函数, 功能是: &#xa;  根据执行的callback()执行结果来更新then()返回的promise状态" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="J3Hmyx6Ni5WOGKM76cY0-5" vertex="1">
+          <mxGeometry y="190" width="470" height="134" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
