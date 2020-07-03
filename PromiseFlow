@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-07-02T14:54:13.563Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36" etag="GSLotMLDVRXBTRF6oUkQ" version="13.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2020-07-03T15:00:08.837Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36" etag="s5_hzMtmQI9TVyR_vvZo" version="13.3.7" type="github">
   <diagram id="EnGBE1AvFFQfY2pASgys" name="第 1 页">
-    <mxGraphModel dx="2100" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1792" dy="748" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -194,8 +194,38 @@
         <mxCell id="J3Hmyx6Ni5WOGKM76cY0-8" value="返回一个新的promise对象&#xa;它的结果状态由onResolved或onRejected执行的结果决定&#xa;      2.1 抛出error ==&gt; 变为rejected,结果值为error&#xa;      2.2 返回值不是promise ==&gt; resolved,结果值为返回值&#xa;      2.3 返回值是promise ==&gt; 由这个promise决定新的promise的结果(成功/失败)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="J3Hmyx6Ni5WOGKM76cY0-5" vertex="1">
           <mxGeometry y="94" width="470" height="96" as="geometry" />
         </mxCell>
-        <mxCell id="J3Hmyx6Ni5WOGKM76cY0-6" value="PENDING状态,保存传递自定义的的回调, 因为直接将then()传递的回调保存起来时, 后面&#xa;reoslve或rejecte调用的时候 返回的promise状态 一直是PENDING状态, 后面链式调用&#xa;没有效果的 &#xa;  然后开始封装重复的代码, 将try..catch代码块封装, 参数是调用的异步函数, 功能是: &#xa;  根据执行的callback执行结果来改变then()返回的promise状态" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="J3Hmyx6Ni5WOGKM76cY0-5" vertex="1">
+        <mxCell id="J3Hmyx6Ni5WOGKM76cY0-6" value="PENDING状态,保存传递自定义的的回调, 因为直接将then()传递的回调保存起来时, 后面&#xa;  reoslve或rejecte调用的时候 返回的promise状态 一直是PENDING状态, 后面链式调用&#xa;  没有效果的 &#xa;  然后开始封装重复的代码, 将try..catch代码块封装, 参数是调用的异步函数, 功能是: &#xa;  根据执行的callback执行结果来改变then()返回的promise状态&#xa;&#xa;当then()没有指定失败的回调函数,需要有一个默认值,将失败的原因继续向下传递" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="J3Hmyx6Ni5WOGKM76cY0-5" vertex="1">
           <mxGeometry y="190" width="470" height="134" as="geometry" />
+        </mxCell>
+        <mxCell id="6oFz6mukuuIErC0ftcEr-2" value="实现catch功能 (用来指定失吹回调函教的方法, catch是then的语法糖)" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-210" y="1070" width="470" height="176" as="geometry">
+            <mxRectangle x="-242" y="1070" width="400" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6oFz6mukuuIErC0ftcEr-3" value="(1)直接调用原型上then()方法,传递回调并return出去&#xa;(2)因为调用catch也是需要返回promise对象的,并将值向下传递" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="6oFz6mukuuIErC0ftcEr-2">
+          <mxGeometry y="26" width="470" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="6oFz6mukuuIErC0ftcEr-4" value="(3)如果catch的上一个方法没有抛出异常呢? ==&gt; callback is not a function&#xa;    	这是因为进入到catch方法中不能将成功的状态value向下进行传递&#xa;    因为: 在原型catch方法中,成功的回调指定是的undefined 解决方案:在then原型&#xa;    方法中给onResolve初始化(如果没有指定成功的回调,需要将成功的回调进行传递下去)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="6oFz6mukuuIErC0ftcEr-2">
+          <mxGeometry y="80" width="470" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="6oFz6mukuuIErC0ftcEr-6" value="实现静态方法resolve和reject" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-210" y="1260" width="468" height="130" as="geometry">
+            <mxRectangle x="-242" y="1070" width="400" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6oFz6mukuuIErC0ftcEr-7" value="(1)resovle用来返回一个指定value的成功的promise,value可能是一个一般的值&#xa;   也可能是promise对象&#xa;&#xa;&#xa;(2)用来返回一个指定reason的失败的promise&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="6oFz6mukuuIErC0ftcEr-6">
+          <mxGeometry y="26" width="468" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="6oFz6mukuuIErC0ftcEr-9" value="race静态方法实现和all静态方法实现" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-720" y="1420" width="470" height="166" as="geometry">
+            <mxRectangle x="-242" y="1070" width="400" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6oFz6mukuuIErC0ftcEr-10" value="reace: &#xa; (1)遍历所有promise,取其对应的结果&#xa; (2)返回的promise由第一个完成p来决定其结果" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="6oFz6mukuuIErC0ftcEr-9">
+          <mxGeometry y="26" width="470" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="6oFz6mukuuIErC0ftcEr-11" value="all:&#xa; (1)返回一个promise,只有当数组中所有promise都成功才成功,否则失败&#xa; (2)判断数组中的promise的状态是否全部成功,都成功调用resolve,计数&#xa; (3)数据的顺序如何存放?必须要和传递的promise数组顺序一致&#xa; 解决方案: 在遍历promise数组时,获取当前遍历的下标,并存放对应的数组中" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="6oFz6mukuuIErC0ftcEr-9">
+          <mxGeometry y="80" width="470" height="86" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
