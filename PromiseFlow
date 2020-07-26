@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-07-26T14:45:59.949Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="4gF2sQk3gca8iS3JB5nb" version="13.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-07-26T14:46:10.321Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="QmcYABIvFKp3tzj-43G1" version="13.5.3" type="github">
   <diagram id="EnGBE1AvFFQfY2pASgys" name="第 1 页">
     <mxGraphModel dx="2082" dy="748" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -90,7 +90,7 @@
           <mxGeometry x="-555" y="470" width="750" height="40" as="geometry" />
         </mxCell>
         <mxCell id="78IFhjk_3ZHjHySOzImb-3" value="Promise custom" style="swimlane;html=1;startSize=20;horizontal=1;childLayout=treeLayout;horizontalTree=0;resizable=0;containerType=tree;" parent="1" vertex="1">
-          <mxGeometry x="-670" y="540" width="639" height="370" as="geometry">
+          <mxGeometry x="-660" y="540" width="639" height="370" as="geometry">
             <mxRectangle x="-600" y="520" width="130" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -147,7 +147,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="78IFhjk_3ZHjHySOzImb-70" value="catch(onRejected)" style="whiteSpace=wrap;html=1;" parent="78IFhjk_3ZHjHySOzImb-3" vertex="1">
-          <mxGeometry x="513" y="310" width="106" height="40" as="geometry" />
+          <mxGeometry x="367" y="310" width="106" height="40" as="geometry" />
         </mxCell>
         <mxCell id="78IFhjk_3ZHjHySOzImb-79" value="方法" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=0;" parent="78IFhjk_3ZHjHySOzImb-3" source="78IFhjk_3ZHjHySOzImb-41" target="78IFhjk_3ZHjHySOzImb-80" edge="1">
           <mxGeometry x="-0.5935" y="47" relative="1" as="geometry">
@@ -156,7 +156,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="78IFhjk_3ZHjHySOzImb-80" value="race(promises)" style="whiteSpace=wrap;html=1;" parent="78IFhjk_3ZHjHySOzImb-3" vertex="1">
-          <mxGeometry x="367" y="310" width="106" height="40" as="geometry" />
+          <mxGeometry x="513" y="310" width="106" height="40" as="geometry" />
         </mxCell>
         <mxCell id="78IFhjk_3ZHjHySOzImb-81" value="实例" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=0;" parent="78IFhjk_3ZHjHySOzImb-3" source="78IFhjk_3ZHjHySOzImb-29" target="78IFhjk_3ZHjHySOzImb-82" edge="1">
           <mxGeometry x="-0.6785" y="-34" relative="1" as="geometry">
@@ -170,20 +170,6 @@
         </mxCell>
         <mxCell id="78IFhjk_3ZHjHySOzImb-82" value="all(promises)" style="whiteSpace=wrap;html=1;" parent="78IFhjk_3ZHjHySOzImb-3" vertex="1">
           <mxGeometry x="232" y="310" width="95" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="78IFhjk_3ZHjHySOzImb-10" value="List" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=15;" parent="1" vertex="1">
-          <mxGeometry x="-10" y="540" width="230" height="410" as="geometry">
-            <mxRectangle x="60" y="540" width="60" height="26" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="78IFhjk_3ZHjHySOzImb-11" value="1.定义Promise基本结构" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="78IFhjk_3ZHjHySOzImb-10" vertex="1">
-          <mxGeometry y="26" width="230" height="34" as="geometry" />
-        </mxCell>
-        <mxCell id="78IFhjk_3ZHjHySOzImb-12" value="2.初始化构造函数&#xa;  (1)初始化状态和数据&#xa;  (2)定义一个数组用来保存&#xa;    then()传递的回调函数" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="78IFhjk_3ZHjHySOzImb-10" vertex="1">
-          <mxGeometry y="60" width="230" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="78IFhjk_3ZHjHySOzImb-13" value="3.在实例then方法中保存传递&#xa;  的回调函数&#xa;  (1)在构造函数中定义resolve&#xa;   和rejecte函数,具体实现改变&#xa;   状态和接收数据并保存&#xa;  (2)在resolve和reject函数中&#xa;    判断数组是否有保存then()&#xa;    的回调,有则异步调用(定时器)&#xa;  (3)resolve和reject不能多次调&#xa;    用,在最开始判断状态即可&#xa;  (4)捕获同步执行器抛出的异常,&#xa;    改变为失败状态,但此时不会调&#xa;    用then()中传递的回调,因为还&#xa;    没有执行then将回调进行保存&#xa;    不明白的话,断点调试即可" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="78IFhjk_3ZHjHySOzImb-10" vertex="1">
-          <mxGeometry y="140" width="230" height="270" as="geometry" />
         </mxCell>
         <mxCell id="J3Hmyx6Ni5WOGKM76cY0-5" value="then()方法实现  (用来指定成功/失败的回调函数)" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="-720" y="1070" width="470" height="324" as="geometry" />
@@ -207,6 +193,20 @@
         </mxCell>
         <mxCell id="6oFz6mukuuIErC0ftcEr-4" value="(3)如果catch的上一个方法没有抛出异常呢? ==&gt; callback is not a function&#xa;     这是因为进入到catch方法中不能将成功的状态value向下进行传递&#xa;    因为: 在原型catch方法中,成功的回调指定是的undefined 解决方案:在then原型&#xa;    方法中给onResolve初始化(如果没有指定成功的回调,需要将成功的回调进行传递下去)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="6oFz6mukuuIErC0ftcEr-2" vertex="1">
           <mxGeometry y="80" width="470" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="78IFhjk_3ZHjHySOzImb-10" value="List" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=15;" parent="1" vertex="1">
+          <mxGeometry x="23" y="540" width="230" height="410" as="geometry">
+            <mxRectangle x="60" y="540" width="60" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="78IFhjk_3ZHjHySOzImb-11" value="1.定义Promise基本结构" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="78IFhjk_3ZHjHySOzImb-10" vertex="1">
+          <mxGeometry y="26" width="230" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="78IFhjk_3ZHjHySOzImb-12" value="2.初始化构造函数&#xa;  (1)初始化状态和数据&#xa;  (2)定义一个数组用来保存&#xa;    then()传递的回调函数" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="78IFhjk_3ZHjHySOzImb-10" vertex="1">
+          <mxGeometry y="60" width="230" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="78IFhjk_3ZHjHySOzImb-13" value="3.在实例then方法中保存传递&#xa;  的回调函数&#xa;  (1)在构造函数中定义resolve&#xa;   和rejecte函数,具体实现改变&#xa;   状态和接收数据并保存&#xa;  (2)在resolve和reject函数中&#xa;    判断数组是否有保存then()&#xa;    的回调,有则异步调用(定时器)&#xa;  (3)resolve和reject不能多次调&#xa;    用,在最开始判断状态即可&#xa;  (4)捕获同步执行器抛出的异常,&#xa;    改变为失败状态,但此时不会调&#xa;    用then()中传递的回调,因为还&#xa;    没有执行then将回调进行保存&#xa;    不明白的话,断点调试即可" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="78IFhjk_3ZHjHySOzImb-10" vertex="1">
+          <mxGeometry y="140" width="230" height="270" as="geometry" />
         </mxCell>
         <mxCell id="6oFz6mukuuIErC0ftcEr-6" value="实现静态方法resolve和reject" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="-210" y="1260" width="468" height="130" as="geometry">
